@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Movie</string>
+    <string name="api_key">a489d4bc8ffe59c0d5d9099ef02fe46a</string>
+
+    <!--navigation bottom menu-->
+    <string name="str_nb_movie">Movie</string>
+    <string name="str_nb_tv">Acara Tv</string>
+    <string name="str_nb_favourite">Favorit</string>
+
+    <!--network-->
+    <string name="request_failed">Mohon, periksa jaringan anda</string>
+
+    <!--toolbar control-->
+    <string name="tb_language">Ganti Bahasa</string>
+
+    <!--detail movie-->
+    <string name="dtl_overview">Ikhtisar</string>
+    <string name="dtl_release">Rilis pada</string>
+</resources>

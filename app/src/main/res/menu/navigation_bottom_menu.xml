@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nb_movie"
+        android:icon="@drawable/icn_movie"
+        android:title="@string/str_nb_movie"
+        />
+    <item
+        android:id="@+id/nb_tv"
+        android:icon="@drawable/icn_tv"
+        android:title="@string/str_nb_tv"
+        />
+    <item
+        android:id="@+id/nb_favourite"
+        android:icon="@drawable/icn_favourite"
+        android:title="@string/str_nb_favourite"
+        />
+</menu>
