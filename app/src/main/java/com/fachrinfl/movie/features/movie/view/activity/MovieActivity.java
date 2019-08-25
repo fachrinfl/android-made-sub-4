@@ -115,12 +115,12 @@ public class MovieActivity extends AppCompatActivity {
                     favorite = true;
                     favouriteImage.setImageResource(R.drawable.icn_favourite_selected);
                     movieHelper.insertProvider(movie);
-                    Toast.makeText(getBaseContext(), "Add Favourite", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.dtl_favourite), Toast.LENGTH_SHORT).show();
                 } else {
                     favorite = false;
                     favouriteImage.setImageResource(R.drawable.icn_favourite_inactive);
                     movieHelper.deleteProvider(String.valueOf(movie.getId()));
-                    Toast.makeText(getBaseContext(), "Remove Favourite", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.dtl_unfavourite), Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -16,4 +16,7 @@
     <!--detail movie-->
     <string name="dtl_overview">Overview</string>
     <string name="dtl_release">Release on</string>
+    <string name="dtl_favourite">Added to Favourite</string>
+    <string name="dtl_unfavourite">Removed to Favourite</string>
+
 </resources>

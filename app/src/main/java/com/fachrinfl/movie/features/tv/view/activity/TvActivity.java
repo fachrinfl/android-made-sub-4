@@ -107,12 +107,12 @@ public class TvActivity extends AppCompatActivity {
                         favorite = true;
                         favouriteImage.setImageResource(R.drawable.icn_favourite_selected);
                         tvHelper.insertProvider(tv);
-                        Toast.makeText(getBaseContext(), "Add Favourite", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.dtl_favourite), Toast.LENGTH_SHORT).show();
                     } else {
                         favorite = false;
                         favouriteImage.setImageResource(R.drawable.icn_favourite_inactive);
                         tvHelper.deleteProvider(String.valueOf(tv.getId()));
-                        Toast.makeText(getBaseContext(), "Remove Favourite", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.dtl_unfavourite), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

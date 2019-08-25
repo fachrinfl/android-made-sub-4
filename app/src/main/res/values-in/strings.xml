@@ -16,4 +16,7 @@
     <!--detail movie-->
     <string name="dtl_overview">Ikhtisar</string>
     <string name="dtl_release">Rilis pada</string>
+    <string name="dtl_favourite">Ditambahkan ke Favorit</string>
+    <string name="dtl_unfavourite">Dihapus dari Favorit</string>
+
 </resources>
