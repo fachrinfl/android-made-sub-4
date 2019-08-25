@@ -1,5 +1,6 @@
 package com.fachrinfl.movie.features.movie.model;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,8 +10,16 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie implements Parcelable
-{
+import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.getColumnInt;
+import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.getColumnString;
+import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.BACKDROP_PATH;
+import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.OVERVIEW;
+import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.POSTER_PATH;
+import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.RELEASE_DATE;
+import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.TITLE;
+import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity._ID;
+
+public class Movie implements Parcelable {
 
     @SerializedName("vote_count")
     @Expose
@@ -201,6 +210,15 @@ public class Movie implements Parcelable
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public Movie(Cursor cursor) {
+        this.id = getColumnInt(cursor, _ID);
+        this.title = getColumnString(cursor, TITLE);
+        this.posterPath = getColumnString(cursor, POSTER_PATH);
+        this.backdropPath = getColumnString(cursor, BACKDROP_PATH);
+        this.overview = getColumnString(cursor, OVERVIEW);
+        this.releaseDate = getColumnString(cursor, RELEASE_DATE);
     }
 
     public void writeToParcel(Parcel dest, int flags) {

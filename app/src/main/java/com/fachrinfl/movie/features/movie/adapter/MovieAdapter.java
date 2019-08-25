@@ -39,7 +39,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public void onBindViewHolder(@NonNull MovieViewHolder movieViewHolder, int i) {
         Movie movie = movieArrayList.get(i);
 
-        movieViewHolder.tvTitle.setText(movie.getOriginalTitle());
+        movieViewHolder.tvTitle.setText(movie.getTitle());
         movieViewHolder.tvRelease.setText(movie.getReleaseDate());
 
         String imagePath="https://image.tmdb.org/t/p/w500" + movie.getPosterPath();

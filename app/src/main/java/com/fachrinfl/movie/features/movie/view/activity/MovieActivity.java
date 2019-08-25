@@ -1,5 +1,7 @@
 package com.fachrinfl.movie.features.movie.view.activity;
 
+import android.app.FragmentManager;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -7,22 +9,36 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fachrinfl.movie.R;
+import com.fachrinfl.movie.features.favourite.db.MovieHelper;
+import com.fachrinfl.movie.features.favourite.view.fragment.FavoriteMovieFragment;
 import com.fachrinfl.movie.features.movie.model.Movie;
 
 public class MovieActivity extends AppCompatActivity {
 
     private Movie movie;
-    private ImageView movieImage;
+    private ImageView movieImage, favouriteImage;
     private String image;
     private TextView movieTitle, movieSynopsis, movieReleaseDate;
     private AppBarLayout appBarLayout;
     private Toolbar toolbar;
+
+    public static String _ID = "_id";
+    public static String TITLE = "title";
+    public static String OVERVIEW = "overview";
+    public static String BACKDROP_PATH = "backdrop_path";
+    public static String POSTER_PATH = "poster_path";
+    public static String RELEASE_DATE = "release_date";
+
+    private MovieHelper movieHelper;
+    private boolean favorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +65,14 @@ public class MovieActivity extends AppCompatActivity {
         });
 
 
+        favouriteImage = (ImageView) findViewById(R.id.ivFavourite);
         movieImage = (ImageView) findViewById(R.id.ivMovieLarge);
         movieTitle = (TextView) findViewById(R.id.tvTitle);
         movieSynopsis = (TextView) findViewById(R.id.tvOverview);
         movieReleaseDate = (TextView) findViewById(R.id.tvRelease);
+
+        movieHelper = new MovieHelper(this);
+        movieHelper.open();
 
 
         Intent intent = getIntent();
@@ -81,6 +101,32 @@ public class MovieActivity extends AppCompatActivity {
             movieSynopsis.setText(movie.getOverview());
             movieReleaseDate.setText(movie.getReleaseDate());
         }
+
+        int isFavourite = movieHelper.queryByIdProvider(String.valueOf(movie.getId())).getCount();
+        if (isFavourite > 0) {
+            favorite = true;
+            favouriteImage.setImageResource(R.drawable.icn_favourite_selected);
+        } else {
+            favorite = false;
+            favouriteImage.setImageResource(R.drawable.icn_favourite_inactive);
+        }
+
+        favouriteImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!favorite) {
+                    favorite = true;
+                    favouriteImage.setImageResource(R.drawable.icn_favourite_selected);
+                    movieHelper.insertProvider(movie);
+                    Toast.makeText(getBaseContext(), "Add Favourite", Toast.LENGTH_SHORT).show();
+                } else {
+                    favorite = false;
+                    favouriteImage.setImageResource(R.drawable.icn_favourite_inactive);
+                    movieHelper.deleteProvider(String.valueOf(movie.getId()));
+                    Toast.makeText(getBaseContext(), "Remove Favourite", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void setNavigationToolbarColor(boolean state) {
@@ -121,4 +167,11 @@ public class MovieActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (movieHelper != null) {
+            movieHelper.close();
+        }
+    }
 }

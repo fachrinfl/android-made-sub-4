@@ -56,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
+        if (id == R.id.nb_favourite) {
+            viewDropShadow.setVisibility(View.INVISIBLE);
+        } else {
+            viewDropShadow.setVisibility(View.VISIBLE);
+        }
         showFragment(id);
         return true;
     }
@@ -63,15 +68,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private void showFragment(int itemId) {
         switch (itemId) {
             case R.id.nb_movie:
-                viewDropShadow.setVisibility(View.VISIBLE);
                 fragment = new MovieFragment();
                 break;
             case  R.id.nb_tv:
-                viewDropShadow.setVisibility(View.VISIBLE);
                 fragment = new TvFragment();
                 break;
             case  R.id.nb_favourite:
-                viewDropShadow.setVisibility(View.INVISIBLE);
                 fragment = new FavouriteFragment();
                 break;
         }
