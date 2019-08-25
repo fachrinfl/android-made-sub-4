@@ -1,4 +1,4 @@
-package com.fachrinfl.movie.features.favourite.db;
+package com.fachrinfl.movie.features.favourite.db.movie;
 
 import android.database.Cursor;
 import android.provider.BaseColumns;

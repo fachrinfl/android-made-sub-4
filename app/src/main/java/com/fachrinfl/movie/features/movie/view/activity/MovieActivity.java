@@ -1,7 +1,5 @@
 package com.fachrinfl.movie.features.movie.view.activity;
 
-import android.app.FragmentManager;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -17,8 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fachrinfl.movie.R;
-import com.fachrinfl.movie.features.favourite.db.MovieHelper;
-import com.fachrinfl.movie.features.favourite.view.fragment.FavoriteMovieFragment;
+import com.fachrinfl.movie.features.favourite.db.movie.MovieHelper;
 import com.fachrinfl.movie.features.movie.model.Movie;
 
 public class MovieActivity extends AppCompatActivity {

@@ -11,14 +11,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.fachrinfl.movie.R;
-import com.fachrinfl.movie.features.favourite.db.MovieHelper;
+import com.fachrinfl.movie.features.favourite.db.movie.MovieHelper;
 import com.fachrinfl.movie.features.favourite.repository.LoadMoviesCallback;
 import com.fachrinfl.movie.features.movie.adapter.MovieAdapter;
 import com.fachrinfl.movie.features.movie.model.Movie;

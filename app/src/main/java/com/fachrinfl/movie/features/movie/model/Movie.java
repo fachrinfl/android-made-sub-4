@@ -10,8 +10,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.getColumnInt;
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.getColumnString;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.getColumnInt;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.getColumnString;
 import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.BACKDROP_PATH;
 import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.OVERVIEW;
 import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.POSTER_PATH;

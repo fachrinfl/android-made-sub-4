@@ -7,22 +7,28 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fachrinfl.movie.R;
+import com.fachrinfl.movie.features.favourite.db.tv.TvHelper;
 import com.fachrinfl.movie.features.tv.model.Tv;
 
 public class TvActivity extends AppCompatActivity {
     
     private Tv tv;
-    private ImageView tvImage;
+    private ImageView tvImage, favouriteImage;
     private String image;
     private TextView tvTitle, tvSynopsis, tvReleaseDate;
     private AppBarLayout appBarLayout;
     private Toolbar toolbar;
+
+    private TvHelper tvHelper;
+    private boolean favorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,7 @@ public class TvActivity extends AppCompatActivity {
         });
 
 
+        favouriteImage = (ImageView) findViewById(R.id.ivFavourite);
         tvImage = (ImageView) findViewById(R.id.ivTvLarge);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvSynopsis = (TextView) findViewById(R.id.tvOverview);
@@ -80,6 +87,35 @@ public class TvActivity extends AppCompatActivity {
             tvTitle.setText(tv.getOriginalName());
             tvSynopsis.setText(tv.getOverview());
             tvReleaseDate.setText(tv.getFirstAirDate());
+
+            tvHelper = new TvHelper(this);
+            tvHelper.open();
+
+            int isFavourite = tvHelper.queryByIdProvider(String.valueOf(tv.getId())).getCount();
+            if (isFavourite > 0) {
+                favorite = true;
+                favouriteImage.setImageResource(R.drawable.icn_favourite_selected);
+            } else {
+                favorite = false;
+                favouriteImage.setImageResource(R.drawable.icn_favourite_inactive);
+            }
+
+            favouriteImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!favorite) {
+                        favorite = true;
+                        favouriteImage.setImageResource(R.drawable.icn_favourite_selected);
+                        tvHelper.insertProvider(tv);
+                        Toast.makeText(getBaseContext(), "Add Favourite", Toast.LENGTH_SHORT).show();
+                    } else {
+                        favorite = false;
+                        favouriteImage.setImageResource(R.drawable.icn_favourite_inactive);
+                        tvHelper.deleteProvider(String.valueOf(tv.getId()));
+                        Toast.makeText(getBaseContext(), "Remove Favourite", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 

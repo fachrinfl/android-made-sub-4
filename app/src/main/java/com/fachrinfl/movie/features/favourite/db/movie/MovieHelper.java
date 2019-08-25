@@ -1,4 +1,4 @@
-package com.fachrinfl.movie.features.favourite.db;
+package com.fachrinfl.movie.features.favourite.db.movie;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,12 +11,12 @@ import com.fachrinfl.movie.features.movie.model.Movie;
 import java.util.ArrayList;
 
 import static android.provider.BaseColumns._ID;
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.MovieColums.BACKDROP_PATH;
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.MovieColums.OVERVIERW;
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.MovieColums.POSTER_PATH;
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.MovieColums.RELEASE_DATE;
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.MovieColums.TITLE;
-import static com.fachrinfl.movie.features.favourite.db.DatabaseContract.TABLE_MOVIE;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.MovieColums.BACKDROP_PATH;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.MovieColums.OVERVIERW;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.MovieColums.POSTER_PATH;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.MovieColums.RELEASE_DATE;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.MovieColums.TITLE;
+import static com.fachrinfl.movie.features.favourite.db.movie.DatabaseContract.TABLE_MOVIE;
 import static com.fachrinfl.movie.features.movie.view.activity.MovieActivity.OVERVIEW;
 
 public class MovieHelper {
